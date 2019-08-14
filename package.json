@@ -1,0 +1,30 @@
+{
+  "name": "forum-core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/valdecirdev/forum-core.git",
+  "author": "Valdecir Junior <valdecir.silva9@fatec.sp.gov.br>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.9",
+    "mongoose-paginate": "^5.0.3",
+    "mysql2": "^1.6.5",
+    "nodemailer": "^6.3.0",
+    "nodemailer-express-handlebars": "^3.1.0",
+    "pack": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "sequelize-cli": "^5.5.0"
+  }
+}
