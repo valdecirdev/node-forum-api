@@ -6,11 +6,13 @@ const cors = require('cors');
 const app = express();
 const server = require('http').Server(app);
 
+require('./database/index');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended : false }));
 app.use(cors());
 
-require('./app/controllers/index')(app);
+require('./app/routes/index')(app);
 
 const port = process.env.PORT || 3330;
 app.listen(port, function () {

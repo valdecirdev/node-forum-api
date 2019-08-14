@@ -1,31 +1,32 @@
-const mongoose = require('../../database');
+// const mongoose = require('../../database');
+const { Schema, model } = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-const AnswerSchema = new mongoose.Schema({
+const AnswerSchema = new Schema({
   description: {
     type: String,
     required: true,
   },
   question: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Question',
     required: true,
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
   replies: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Reply',
   }],
   upVotes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
   }],
   downVotes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
   }],
   createdAt: {
@@ -36,6 +37,6 @@ const AnswerSchema = new mongoose.Schema({
 
 AnswerSchema.plugin(mongoosePaginate);
 
-const Answer = mongoose.model('Answer', AnswerSchema);
+const Answer = model('Answer', AnswerSchema);
 
 module.exports = Answer;

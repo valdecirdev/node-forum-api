@@ -1,12 +1,13 @@
-const mongoose = require('../../database');
+// const mongoose = require('../../database');
+const { Schema, model } = require('mongoose');
 
-const AuthHistorySchema = new mongoose.Schema({
+const AuthHistorySchema = new Schema({
   token: {
     type: String,
     required: true,
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
@@ -22,6 +23,6 @@ const AuthHistorySchema = new mongoose.Schema({
 });
 
 
-const AuthHistory = mongoose.model('AuthHistory', AuthHistorySchema);
+const AuthHistory = model('AuthHistory', AuthHistorySchema);
 
 module.exports = AuthHistory;

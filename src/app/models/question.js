@@ -1,7 +1,8 @@
-const mongoose = require('../../database');
+// const mongoose = require('../../database');
+const { Schema, model } = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-const QuestionSchema = new mongoose.Schema({
+const QuestionSchema = new Schema({
   title: {
     type: String,
     require: true,
@@ -11,20 +12,20 @@ const QuestionSchema = new mongoose.Schema({
     required: true,
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
   answers: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Answer',
   }],
   upVotes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
   }],
   downVotes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
   }],
   createdAt: {
@@ -36,6 +37,6 @@ const QuestionSchema = new mongoose.Schema({
 QuestionSchema.plugin(mongoosePaginate);
 
 
-const Question = mongoose.model('Question', QuestionSchema);
+const Question = model('Question', QuestionSchema);
 
 module.exports = Question;
