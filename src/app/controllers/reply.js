@@ -50,7 +50,7 @@ module.exports = {
             answerReply.replies.push( reply );
             await answerReply.save();
 
-            return response.status(200).send({ success: true, message: 'Service performed successfully', data: reply });
+            return response.status(201).send({ success: true, message: 'Service performed successfully', data: reply });
         } catch (err) {
             console.log(err);
             return response.status(500).send({ success: false, message: 'Creation failed', data: null });

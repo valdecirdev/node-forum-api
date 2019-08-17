@@ -43,7 +43,7 @@ module.exports = {
     
             const question = await Question.create({ ...request.body, user: request.userId });
     
-            return response.status(200).send({ success: true, message: 'Service performed successfully', data: question });
+            return response.status(201).send({ success: true, message: 'Service performed successfully', data: question });
         } catch(err){
             return response.status(500).send({ success: false, message: 'Creation failed', data: null });
         }

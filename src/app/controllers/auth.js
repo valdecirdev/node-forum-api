@@ -63,7 +63,7 @@ module.exports = {
     
             await registerAuthHistory({ token, user: user._id });
     
-            return response.status(200).send({ success: true, message: 'Service performed successfully', data: { user, token } });
+            return response.status(201).send({ success: true, message: 'Service performed successfully', data: { user, token } });
         } catch (err) {
             return response.status(500).send({ success: false, message: 'Registration failed', data: null });
         }
