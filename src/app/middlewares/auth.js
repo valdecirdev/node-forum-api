@@ -11,27 +11,27 @@ module.exports = (request, response, next) => {
     }
 
     if (!authHeader)
-        return response.status(401).json({ error: 'No token provided' });
+        return response.status(400).json({ error: 'No token provided' });
     
     const parts = authHeader.split(' ');
 
     if(!parts.length === 2)
-        return response.status(401).json({ error: 'Token error' });
+        return response.status(400).json({ error: 'Token error' });
 
     const [ scheme, token ] = parts;
 
 
     if(!/^Bearer$/i.test(scheme))
-        return response.status(401).json({ error: 'Token malformatted' });
+        return response.status(400).json({ error: 'Token malformatted' });
 
     jwt.verify(token, process.env.APP_SECRET, async (err, decoded) => {
         if(err)
-            return response.status(401).json({ error: 'Token Invalid' });
+            return response.status(400).json({ error: 'Token Invalid' });
         
         const history = await AuthHistory.findOne({ token: token, $and: [{ status: true }] });
 
         if(!history)
-            return response.status(401).json({ error: 'Token not registered' });
+            return response.status(400).json({ error: 'Token not registered' });
 
         request.userId = decoded.id;
         request.token = token;
