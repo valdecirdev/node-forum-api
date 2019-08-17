@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     required: true,
     lowercase: true,
   },
+  company: {
+    type: String,
+    required: false,
+  },
   title: {
     type: String,
     required: false,
