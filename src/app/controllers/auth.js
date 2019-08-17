@@ -94,10 +94,10 @@ module.exports = {
             const user = await User.findOne({ email }).select('+password');
     
             if (!user)
-                return response.status(400).send({ success: true, message: 'User not found', data: null });
+                return response.status(400).send({ success: false, message: 'User not found', data: null });
             
             if (!await bcrypt.compare( password, user.password))
-                return response.status(400).send({ success: true, message: 'Invalid password', data: null });
+                return response.status(400).send({ success: false, message: 'Invalid password', data: null });
     
             user.password = undefined;
             user.passwordResetExpires = undefined;
